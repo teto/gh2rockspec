@@ -1,14 +1,15 @@
 # vim2rockspec
-Generate a .rockspec for your plugin repository !
+Generate a .rockspec for your plugin repository ! Why ? 
+because vim plugins can then declare their dependencies/metadata via the rockspec !
+See [this blog post](https://teto.github.io/posts/2022-06-22-neovim-plugin-luarocks-2.html) if you are curious.
 
 Usage:
-`./main USER/REPO`
+`python3 ./main USER/REPO`
 
 For instance:
-`./main MunifTanjim/nui.nvim`
+`python3 ./main MunifTanjim/nui.nvim`
 
-See https://docs.github.com/en/rest/repos/repos#get-a-repository for a
-description of the github API to retreive your vim plugin description
+[Description](https://docs.github.com/en/rest/repos/repos#get-a-repository) of the github API to retreive your vim plugin description
 
 # dependencies
 

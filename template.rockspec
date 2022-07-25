@@ -6,7 +6,6 @@ version = _MODREV .. _SPECREV
 description = {
 	summary = "$description",
 	labels = { "neovim"},
-	-- detailed = [[ ]],
 	homepage = "$homepage",
 	license = "$license",
 }
@@ -17,7 +16,6 @@ dependencies = {
 
 source = {
 	url = "http://github.com/$owner/$repo/archive/v" .. _MODREV .. ".zip",
-	-- dir = "rest.nvim-" .. _MODREV,
 }
 
 build = {

@@ -10,7 +10,16 @@ from string import Template
 # argparse.
 # OWNER/REPO
 # TODO need to pass token as well
-user = sys.argv[1]
+parser = argparse.ArgumentParser(description=''' 
+    Generate a rockspec for a github repository.
+    Targets first and foremost vim plugins.
+    ''')
+parser.add_argument("repo", metavar="USER/REPO",
+    help="The github repository you want to generate a rockspec for; of the form USER/REPO, e.g.,"
+         "sunjon/stylish.nvim for https://github.com/sunjon/stylish.nvim")
+
+args = parser.parse_args()
+user =  args.repo
 url = f"https://api.github.com/repos/{user}"
 # curl \
 #   -H "Accept: application/vnd.github+json" \ 
@@ -19,9 +28,9 @@ url = f"https://api.github.com/repos/{user}"
 cmd = [ "curl", "-H", "Accept: application/vnd.github+json",  url]
 res = subprocess.check_output(cmd)
 
-print(res.decode())
+# print(res.decode())
 data = json.loads(res.decode())
-print(data)
+# print(data)
 
 fd = open("template.rockspec")
 content = fd.read()
