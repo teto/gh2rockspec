@@ -1,7 +1,7 @@
-local _MODREV, _SPECREV = "scm", "-1"
+local MODREV, SPECREV = "scm", "-1"
 rockspec_format = "3.0"
 package = "$name"
-version = _MODREV .. _SPECREV
+version = MODREV .. SPECREV
 
 description = {
 	summary = "$description",
@@ -15,7 +15,7 @@ dependencies = {
 }
 
 source = {
-	url = "http://github.com/$owner/$repo/archive/v" .. _MODREV .. ".zip",
+	url = "http://github.com/$owner/$repo/archive/v" .. MODREV .. ".zip",
 }
 
 build = {
