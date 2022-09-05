@@ -18,6 +18,12 @@ source = {
 	url = "http://github.com/$owner/$repo/archive/v" .. MODREV .. ".zip",
 }
 
+if MODREV == "scm" then
+	source = {
+		url = "git://github.com/$owner/$repo",
+	}
+end
+
 build = {
    type = "builtin",
    copy_directories = {
