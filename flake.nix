@@ -11,6 +11,7 @@
     utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        gh2rockspec-wrapped = pkgs.writers.writePython3Bin "gh2rockspec-wrapped" { } ./main.py;
       in
       {
 
@@ -28,7 +29,13 @@
             #   license = lib.licenses.gpl2;
             #   maintainers = with lib.maintainers; [ teto ];
             # };
-          gh2rockspec = pkgs.writers.writePython3Bin "gh2rockspec" { } ./main.py;
+          gh2rockspec = pkgs.writeShellApplication {
+            name = "gh2rockspec"; 
+            runtimeInputs = [ gh2rockspec-wrapped ];
+            text = ''
+              gh2rockspec-wrapped --template ${./template.rockspec} "$@"
+            '';
+          };
         };
       });
 }

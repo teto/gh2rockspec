@@ -19,6 +19,10 @@ parser.add_argument(
     help="The github repository you want to generate a rockspec for;"
          "of the form USER/REPO, e.g.,"
          "sunjon/stylish.nvim for https://github.com/sunjon/stylish.nvim")
+parser.add_argument(
+    "--template", metavar="FILE",
+    default="template.rockspec",
+    help="Path to the template file.")
 
 args = parser.parse_args()
 user = args.repo
@@ -34,7 +38,8 @@ res = subprocess.check_output(cmd)
 data = json.loads(res.decode())
 # print(data)
 
-fd = open("template.rockspec")
+template_file = args.template
+fd = open(template_file)
 content = fd.read()
 tpl = Template(content)
 
